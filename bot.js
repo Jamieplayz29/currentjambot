@@ -29,5 +29,18 @@ client.on("message", message => {
     }
 })
 
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch (args[0]) {
+        case 'a':
+            message.channel.send('/a <@529024504156913679>')   
+
+
+    }
+
+})
+
+
 
 client.login('NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.Lt4vxutppDsljvTRyv4dRvhz4Eg')
