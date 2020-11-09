@@ -1,7 +1,7 @@
 const {Client, RichEmbed} = require('discord.js');
 const client = new Client();
 
-const noNoWords = ['https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif'];
+const noNoWords = ['https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075'];
 
 const PREFIX = "/"
 
