@@ -12,7 +12,8 @@ client.on('ready', () => {
 
 client.on('message', msg => {
     if (msg.content === 'ping') {
-      msg.reply(`pong (${ping})`);
+        var ping = new Date().getTime() - msg.createdTimestamp
+      msg.reply(`pong (${ping}ms)`);
     } 
 }); 
 
