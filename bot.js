@@ -11,7 +11,7 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-    if (msg.content === 'ping') {
+    if (msg.content === `${PREFIX}ping`) {
         var ping = new Date().getTime() - msg.createdTimestamp
       msg.reply(`pong (${ping}ms)`);
     } 
