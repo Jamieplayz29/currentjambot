@@ -12,9 +12,21 @@ client.on('ready', () => {
 
 client.on('message', msg => {
     if (msg.content === 'ping') {
-      msg.reply('pong');
+      msg.reply(`pong (${ping})`);
     } 
 }); 
+
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch (args[0]) {
+        case 'a':
+            message.channel.send('/a <@529024504156913679>');
+        
+        
+    }
+
+})
 
 
 client.on("message", message => {
