@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node bot.js"
+    "start": "node bot.js"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +13,10 @@
     "@discordjs/opus": "^0.3.3",
     "bufferutil": "^4.0.2",
     "discord.js": "^12.4.1",
+    "getjson": "^0.0.1",
     "node.js": "0.0.1-security",
     "opusscript": "0.0.7",
-    "utf-8-validate": "^5.0.3"
+    "utf-8-validate": "^5.0.3",
+    "youtube-notification": "^1.1.0"
   }
 }
