@@ -21,7 +21,7 @@ client.on('message', message => {
     let args = message.content.substring(PREFIX.length).split(" ");
 
     switch (args[0]) {
-        case 'a':
+        case 'disabled-command':
             message.channel.send('/a <@529024504156913679>');
         
         
