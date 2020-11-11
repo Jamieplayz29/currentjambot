@@ -15,8 +15,8 @@ client.on('message', msg => {
         var ping = new Date().getTime() - msg.createdTimestamp
       msg.reply(`pong (${ping}ms)`);
     } 
+}); 
 
-    
 client.on('message', message => {
     let args = message.content.substring(PREFIX.length).split(" ");
 
@@ -45,4 +45,4 @@ client.on("message", message => {
 
 
 
-client.login('NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.Lt4vxutppDsljvTRyv4dRvhz4Eg')
+client.login('NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.AynPm8cxJvrtlXM0pWhVD1o04VM')
