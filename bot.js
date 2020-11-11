@@ -17,10 +17,10 @@ client.on('message', msg => {
     } 
 }); 
 
-client.on('<@434372679668334602>', msg => {
+client.on('message', msg => {
     if (msg.content === `<@434372679668334602>`) {
         var ping = new Date().getTime() - msg.createdTimestamp
-      msg.reply(`pong (${ping}ms)`);
+      msg.reply(`<@434372679668334602>`);
     } 
 }); 
 
