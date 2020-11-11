@@ -17,6 +17,14 @@ client.on('message', msg => {
     } 
 }); 
 
+client.on('<@434372679668334602>', msg => {
+    if (msg.content === `<@434372679668334602>`) {
+        var ping = new Date().getTime() - msg.createdTimestamp
+      msg.reply(`pong (${ping}ms)`);
+    } 
+}); 
+
+
 client.on('message', message => {
     let args = message.content.substring(PREFIX.length).split(" ");
 
