@@ -17,12 +17,17 @@ client.on('message', msg => {
     } 
 }); 
 
-client.on('message', msg => {
-    if (msg.content === `<@434372679668334602>`) {
-        var ping = new Date().getTime() - msg.createdTimestamp
-      msg.reply(`<@434372679668334602>`);
-    } 
-}); 
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch (args[0]) {
+        case 'a':
+            message.channel.send('/a <@434372679668334602>')   
+
+
+    }
+
+})
 
 
 client.on('message', message => {
