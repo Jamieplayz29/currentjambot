@@ -10,7 +10,7 @@ client.on('ready', () => {
 });
 
 
- 
+  
 client.on("message", message => {
     var content = message.content;
     var stringToCheck = content.replace(/\s+/g, '').toLowerCase();
