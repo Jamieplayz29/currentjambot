@@ -67,7 +67,7 @@ client.on("message", async message => {
     if (!message.content.startsWith(prefix)) return;
   
     const serverQueue = queue.get(message.guild.id);
-  
+  try {
     if (message.content.startsWith(`${prefix}play`)) {
       execute(message, serverQueue);
       return;
@@ -81,6 +81,8 @@ client.on("message", async message => {
       return;
     } else {
       message.channel.send("maybe an actual command would be helpful smh.");
+    }} catch (err) {
+      next(err);
     }
   });
   async function execute(message, serverQueue) {
