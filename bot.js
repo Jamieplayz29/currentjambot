@@ -59,9 +59,9 @@ client.on("message", message => {
     }
 })
 
+//music
 
-
-//music!!!
+// list of commands to exclude from 'not an actual command'
 client.on("message", async message => {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
@@ -77,11 +77,12 @@ client.on("message", async message => {
     } else if (message.content.startsWith(`${prefix}stop`)) {
       stop(message, serverQueue);
       return;
+    } else if (message.content.startsWith(`${prefix}ping`)) {
+      return;
     } else {
       message.channel.send("maybe an actual command would be helpful smh.");
     }
   });
-  //server queue its literally in the code bruh.com
   async function execute(message, serverQueue) {
     const args = message.content.split(" ");
   
@@ -172,8 +173,8 @@ client.on("message", async message => {
       .on("error", error => console.error(error));
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
     serverQueue.textChannel.send(`Start playing: **${song.title}**`);
-  }
 
+  } 
 
 
 
