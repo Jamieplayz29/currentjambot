@@ -89,8 +89,6 @@ client.on("message", async message => {
     const args = message.content.split(" ");
   
     const voiceChannel = message.member.voice.channel;
-
-    try{
       if (!voiceChannel)
       return message.channel.send(
         "join a voice channel then."
@@ -100,8 +98,6 @@ client.on("message", async message => {
       return message.channel.send(
         "my role doesn't let me connect/speak in the channel dud"
       );
-    }} catch (err) {
-      next(err);
     }
   
     const songInfo = await ytdl.getInfo(args[1]);
