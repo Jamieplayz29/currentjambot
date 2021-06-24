@@ -33,7 +33,7 @@ client.on('message', msg => {
 
 //spam command type beat 
 client.on('message', message => {
-    let args = message.content.substring(prefix.length).split(" ");
+    let args = message.content.substring(settings.prefix.length).split(" ");
     switch (args[0]) {
         case 'disabled-command':
             message.channel.send('/a <@529024504156913679>');
