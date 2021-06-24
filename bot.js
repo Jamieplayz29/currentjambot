@@ -2,10 +2,10 @@ const {Client, RichEmbed} = require('discord.js');
 const client = new Client();
 const { Player } = require("discord-player");
 const player = new Player(client);
-const {
-	prefix,
-	token,
-} = require('./config.json');
+const settings = {
+	prefix: "Jam ",
+  token: "NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8"
+};
 
 const queue = new Map();
 const ytdl = require('ytdl-core');
@@ -59,8 +59,6 @@ client.on("message", message => {
 })
 
 
-client.login(token)
-
 
 
 
@@ -75,3 +73,6 @@ client.on("message", async (message) => {
     }
 
 });
+
+
+client.login(settings.token)
