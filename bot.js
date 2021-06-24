@@ -25,7 +25,7 @@ client.on('ready', () => {
 
 //ping command type beat
 client.on('message', msg => {
-    if (msg.content === `${prefix}ping`) {
+    if (msg.content === `${settings.prefix}ping`) {
         var ping = new Date().getTime() - msg.createdTimestamp
       msg.reply(`pong (${ping}ms)`); 
     } 
