@@ -56,7 +56,7 @@ client.on("message", message => {
 const userIDs = ['725141738255024229', '625765223915061289'];
 
 client.on("message", function(message) {
-    for (let i = 0; i < userID.length; i++) {
+    for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){  
             message.channel.send("shush please, thanks!!")
             break
