@@ -52,8 +52,8 @@ client.on("message", message => {
 
 
 //telling people to shutup lol little trolling.com XDXD
-//              Cameron:                 Steev:
-const userIDs = ['725141738255024229', '625765223915061289'];
+//              Cameron:                 Steev:                 Leandro:
+const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563'];
 
 client.on("message", function(message) {
     for (let i = 0; i < userIDs.length; i++) {

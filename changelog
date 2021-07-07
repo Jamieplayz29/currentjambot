@@ -12,3 +12,4 @@
 2.0 (beta2) - stopped ping command from triggering "not a valid command" message
 2.1 - changed prefix to jam
 2.2 - sike prefix changed to '=' and added the function to tell certain people to shush (03/06/2021)
+2.2.1 - added leandro to the list of shush kebab
