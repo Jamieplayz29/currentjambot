@@ -59,6 +59,7 @@ client.on("message", function(message) {
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){  
             message.channel.send("shush please, thanks!!")
+            message.log("did a little trolling!!")
             break
         }
     }
