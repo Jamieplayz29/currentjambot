@@ -1,7 +1,5 @@
 const {Client, RichEmbed} = require('discord.js');
 const client = new Client();
-const { Player } = require("discord-player");
-const player = new Player(client);
 const settings = {
 	prefix: "=",
   token: "NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8"
@@ -52,19 +50,18 @@ client.on("message", message => {
 
 
 //telling people to shutup lol little trolling.com XDXD
-//              Cameron:                 Steev:                 Leandro:
+//               Cameron:               Steev:                Leandro:
 const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563'];
 
 client.on("message", function(message) {
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){  
-            message.channel.send("shush please, thanks!!")
+            message.reply("shush please, thanks!!")
             console.log("did a little trolling!!")
             break
         }
     }
 });
-
 
 //login ting
 client.login(settings.token)
