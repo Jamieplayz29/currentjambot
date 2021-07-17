@@ -50,13 +50,15 @@ client.on("message", message => {
 
 
 //telling people to shutup lol little trolling.com XDXD
-//               Cameron:               Steev:                Leandro:
-const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563'];
+//               Cameron:               Steev:                Leandro:              Mine:
+const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563', /*'498615291908194324'*/];
 
 client.on("message", function(message) {
+    let randomNumber = Math.floor(Math.random() * 9);
+    const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){  
-            message.reply("shush please, thanks!!")
+            message.reply(`${deadResponses[randomNumber]}`);
             console.log("did a little trolling!!")
             break
         }
