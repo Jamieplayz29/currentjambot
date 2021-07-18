@@ -13,4 +13,5 @@
 2.1 - changed prefix to jam
 2.2 - sike prefix changed to '=' and added the function to tell certain people to shush (03/06/2021)
 2.2.1 - added leandro to the list of shush kebab
-2.3 - added a bunch of different ways to tell cameron to shush
+2.3 - added a bunch of different ways to tell cameron to shush (17/07/2021)
+2.3.1 - tweaked console log to show exactly what bot said (18/07/2021)
