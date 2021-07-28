@@ -15,3 +15,4 @@
 2.2.1 - added leandro to the list of shush kebab
 2.3 - added a bunch of different ways to tell cameron to shush (17/07/2021)
 2.3.1 - tweaked console log to show exactly what bot said (18/07/2021)
+3.0 - added command handler, all commands now split into seperate files (28/07/2021)

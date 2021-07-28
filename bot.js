@@ -1,8 +1,11 @@
-const {Client, RichEmbed} = require('discord.js');
-const client = new Client();
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const fs = require('fs');
+client.commands = new Discord.Collection();
+const commandFiles =  fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const settings = {
-	prefix: "=",
-  token: "NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8"
+	prefix: '=',
+  token: 'NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8'
 };
 
 
@@ -14,13 +17,26 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
  
+for(const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command)
+}
 
-//ping command type beat
-client.on('message', msg => {
-    if (msg.content === `${settings.prefix}ping`) {
-        let ping = new Date().getTime() - msg.createdTimestamp
-      msg.reply(`pong (${ping}ms)`); 
-    } 
+
+//command handler
+client.on('message', message => {
+    if (message.author.bot) return;
+
+    const args = message.content.slice(settings.prefix.length).trim().split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if (!client.commands.has(command)) return;
+    try {
+        client.commands.get(command).execute(message, args);
+    }catch(error) {
+        console.error(error);
+        message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
+    }
 }); 
 
 /* spam command type beat 
@@ -36,6 +52,7 @@ client.on('message', message => {
 }) */
 
 
+
 //banned word removal type beat
 client.on("message", message => {
     let content = message.content;
@@ -46,6 +63,7 @@ client.on("message", message => {
         }
     }
 })
+
 
 
 
