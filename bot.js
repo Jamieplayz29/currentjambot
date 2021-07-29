@@ -2,10 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 client.commands = new Discord.Collection();
-const commandFiles =  fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const { Player } = require("discord-player");
+const player = new Player(client);
+client.player = player;
 const settings = {
-	prefix: '=',
-  token: 'NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8'
+    prefix: '=',
+    token: 'NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8'
 };
 
 
@@ -17,13 +19,17 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
  
-for(const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command)
-}
-
 
 //command handler
+fs.readdirSync('./commands').forEach(dirs => {
+    const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
+
+    for(const file of commands) {
+        const command = require(`./commands/${dirs}/${file}`);
+        client.commands.set(command.name, command)
+    }
+});
+
 client.on('message', message => {
     if (message.author.bot) return;
 
@@ -39,17 +45,8 @@ client.on('message', message => {
     }
 }); 
 
-/* spam command type beat 
-client.on('message', message => {
-    let args = message.content.substring(settings.prefix.length).split(" ");
-    switch (args[0]) {
-        case 'lost.com':
-            message.channel.send('/a <@529024504156913679>');
-        
-        
-    }
-
-}) */
+//music stuff
+client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));
 
 
 

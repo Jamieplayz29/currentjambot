@@ -2,7 +2,7 @@ module.exports =
 {
     name: 'rolemeup',
     description: 'adds roles to jam when someone kicks him (me) ',
-    execute(message, args) {
+    execute(client, message, args) {
     let role = message.member.guild.roles.cache.find(role => role.name === 'Reddit Admin (eternal virginity)');
     if (message.author.id === '498615291908194324') {
         message.member.roles.add(role);
