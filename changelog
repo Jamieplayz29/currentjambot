@@ -17,3 +17,4 @@
 2.3.1 - tweaked console log to show exactly what bot said (18/07/2021)
 3.0 - added command handler, all commands now split into seperate files (28/07/2021)
 3.1 - added folders to command handler (29/07/2021)
+3.1.1 - disabled rolemeup command in command handler due to undefined error and moved it to bot.js, adds Mecurial Number Six role by name (09/08/2021)
