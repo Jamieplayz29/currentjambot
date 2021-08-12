@@ -1,3 +1,6 @@
+/*
+
+
 module.exports =
 {
     name: '',
@@ -5,4 +8,7 @@ module.exports =
     execute(client,message, args) {
 
     }      
-}
+} 
+
+
+*/

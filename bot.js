@@ -1,7 +1,10 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const {Client, Intents, Discord, Collection} = require('discord.js');
+const client = new Client({
+    partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
+    intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
+});
 const fs = require('fs');
-client.commands = new Discord.Collection();
+client.commands = new Collection();
 const { Player } = require("discord-player");
 const player = new Player(client);
 client.player = player;
@@ -12,7 +15,7 @@ const settings = {
 
 
 //actual banned words dud
-const noNoWords = ['https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075', 'https://tenor.com/view/caress-fruits-gif-12997033', 'https://cdn.discordapp.com/attachments/539298404228923444/586404923999256586/image0.gif?comment=NiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNigger', 'https://media.discordapp.net/attachments/610587194528104452/730189439522832414/do_not_disrespect.gif', 'https://tenor.com/view/old-man-guy-senior-walker-gerald-gif-17449313'];
+const noNoWords = ['https://tenor.com/view/pog-frog-frog-pog-frog-dance-gif-20735320', 'https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075', 'https://tenor.com/view/caress-fruits-gif-12997033', 'https://media.discordapp.net/attachments/610587194528104452/730189439522832414/do_not_disrespect.gif', 'https://tenor.com/view/old-man-guy-senior-walker-gerald-gif-17449313'];
 
 //log the login in console... type beat
 client.on('ready', () => {
@@ -30,7 +33,7 @@ fs.readdirSync('./commands').forEach(dirs => {
     }
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
     if (message.author.bot) return;
 
     const args = message.content.slice(settings.prefix.length).trim().split(/ +/);
@@ -51,11 +54,12 @@ client.player.on("trackStart", (message, track) => message.channel.send(`Now pla
 
 
 //banned word removal type beat
-client.on("message", message => {
+client.on("messageCreate", message => {
     let content = message.content;
     for (let i = 0; i < noNoWords.length; i++) {
         if (content.includes(noNoWords[i])){  
             message.delete();
+            console.log(`${noNoWords[i]} was sent by ${message.author.username} and was deleted`)
             break
         } 
     }
@@ -67,7 +71,7 @@ client.on("message", message => {
 //               Cameron:               Steev:                Leandro:              Mine:
 const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/];
 
-client.on("message", function(message) {
+client.on("messageCreate", function(message) {
     let randomNumber = Math.floor(Math.random() * 9);
     const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
     for (let i = 0; i < userIDs.length; i++) {

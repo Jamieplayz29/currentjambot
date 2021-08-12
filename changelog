@@ -19,3 +19,4 @@
 3.1 - added folders to command handler (29/07/2021)
 3.1.1 - disabled rolemeup command in command handler due to undefined error and moved it to bot.js, adds Mecurial Number Six role by name (09/08/2021)
 3.1.2 - actually fixed the command handler for rolemeup by removing client from the imput :/ (12/08/2021)
+4.0 - migrated to discord.js v13 :) (12/08/2021)

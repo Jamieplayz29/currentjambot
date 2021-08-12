@@ -3,7 +3,7 @@ module.exports =
     name: 'clear',
     description: 'clears a set ammount of messages',
     async execute(message, args) {
-        if (message.member.hasPermission('ADMINISTRATOR')) {
+        if (message.member.permissions.has('ADMINISTRATOR')) {
             if(!args[0]) return message.reply('Enter the ammount of messages u want to clear');
             if(isNaN(args[0])) return message.reply('enter a number to clear messages');
 
