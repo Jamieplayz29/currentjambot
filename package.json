@@ -24,9 +24,18 @@
     "getjson": "^0.0.1",
     "node.js": "0.0.1-security",
     "opusscript": "0.0.7",
+    "package.json": "^2.0.1",
     "soundcloud-scraper": "^4.0.2",
     "utf-8-validate": "^5.0.3",
     "youtube-notification": "^1.1.0",
     "ytdl-core": "^4.9.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jamieplayz29/currentjambot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jamieplayz29/currentjambot/issues"
+  },
+  "homepage": "https://github.com/Jamieplayz29/currentjambot#readme"
 }
