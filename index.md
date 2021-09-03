@@ -19,7 +19,7 @@ module.exports =
 In order to use the bot you will need to put your discord token and prefix into the .env file in this format:
 
 ```
-DISCORD_TOKEN = NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.zSYutbZRJ04S2aUEBKwWAX3uWQA
+DISCORD_TOKEN = YourTokenHere
 PREFIX = =
 
 ```
