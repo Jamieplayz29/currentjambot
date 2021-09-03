@@ -8,10 +8,7 @@ client.commands = new Collection();
 const { Player } = require("discord-player");
 const player = new Player(client);
 client.player = player;
-const settings = {
-    prefix: '=',
-    token: 'NzA5MDI2OTM2OTE5MjkzOTg0.Xrf6yg.0DCFMGcUTtgBDSRPI7xk3HJk1n8'
-};
+require('dotenv').config();
 
 
 //actual banned words dud
@@ -36,7 +33,7 @@ fs.readdirSync('./commands').forEach(dirs => {
 client.on('messageCreate', message => {
     if (message.author.bot) return;
 
-    const args = message.content.slice(settings.prefix.length).trim().split(/ +/);
+    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return;
@@ -46,7 +43,9 @@ client.on('messageCreate', message => {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
     }
-}); 
+});
+
+
 
 //music stuff
 client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));
@@ -67,15 +66,17 @@ client.on("messageCreate", message => {
 
 
 
+
+
 //telling people to shutup lol little trolling.com XDXD
-//               Cameron:               Steev:                Leandro:              Mine:
-const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/];
+//               Cameron:               Steev:                Leandro:              Mine:                     Wick
+const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/, '434372679668334602'];
 
 client.on("messageCreate", function(message) {
     let randomNumber = Math.floor(Math.random() * 9);
     const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
     for (let i = 0; i < userIDs.length; i++) {
-        if (message.author.id === userIDs[i]){  
+        if (message.author.id === userIDs[i]){
             message.reply(deadResponses[randomNumber]);
             console.log(`said "${deadResponses[randomNumber]}" to ${message.author.username} in ${message.guild.name}` );
             break
@@ -83,5 +84,6 @@ client.on("messageCreate", function(message) {
     }
 });
 
+
 //login ting
-client.login(settings.token)
+client.login(process.env.DISCORD_TOKEN);
