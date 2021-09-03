@@ -33,6 +33,7 @@
     "package.json": "^2.0.1",
     "rest": "^2.0.0",
     "soundcloud-scraper": "^4.0.2",
+    "tar": "^6.1.11",
     "utf-8-validate": "^5.0.3",
     "ytdl-core": "^4.9.0"
   },
