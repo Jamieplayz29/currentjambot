@@ -23,3 +23,4 @@
 4.1 - changed rolemeup to use args for the role name instead of a set role name (3/09/2021)
 4.1.1 - added removerole command (3/09/2021)
 4.1.2 - play command now says shush or something idk (3/09/2021)
+4.1.3 - changed rolemeup and removerole to accept role IDs too (5/09/2021)
