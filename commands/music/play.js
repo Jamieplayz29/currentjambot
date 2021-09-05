@@ -1,11 +1,9 @@
-/*
-
-module.exports =
+/*module.exports =
 {
     name: 'play',
     description: 'plays a song',
-    execute(message, args) { 
-    }
-} 
+    async execute(message, args) { 
+	}
 
+} 
 */

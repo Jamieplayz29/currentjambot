@@ -69,8 +69,8 @@ client.on("messageCreate", message => {
 
 
 //telling people to shutup lol little trolling.com XDXD
-//               Cameron:               Steev:                Leandro:              Mine:                     Wick
-const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/, '434372679668334602'];
+//               Cameron:               Steev:                Leandro:              Mine:
+const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/];
 
 client.on("messageCreate", function(message) {
     let randomNumber = Math.floor(Math.random() * 9);
