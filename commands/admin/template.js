@@ -5,7 +5,7 @@ module.exports =
 {
     name: '',
     description: '',
-    execute(client,message, args) {
+    execute(message, args) {
 
     }      
 } 
