@@ -26,3 +26,4 @@
 4.1.3 - changed rolemeup and removerole to accept role IDs too (5/09/2021)
 4.1.4 - added smackmeup command (6/09/2021)
 4.1.5 - added smacmedown command and changed removerole command to rolemedown (6/09/2021)
+4.1.6 - smacmedown command now can be used on anyone, by admins (6/09/2021)
