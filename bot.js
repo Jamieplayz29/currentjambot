@@ -1,4 +1,4 @@
-const {Client, Intents, Discord, Collection} = require('discord.js');
+const {Client, Intents, Discord, Collection, MessageEmbed} = require('discord.js');
 const client = new Client({
     partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
     intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
@@ -32,13 +32,15 @@ fs.readdirSync('./commands').forEach(dirs => {
 
 client.on('messageCreate', message => {
     if (message.author.bot) return;
+    if (!message.content.startsWith(process.env.PREFIX)) return;
 
     const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
+    const embed = new MessageEmbed()
 
     if (!client.commands.has(command)) return;
     try {
-        client.commands.get(command).execute(message, args);
+        client.commands.get(command).execute(message, args, embed);
     }catch(error) {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
