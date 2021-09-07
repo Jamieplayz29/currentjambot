@@ -6,6 +6,7 @@ const client = new Client({
 const fs = require('fs');
 client.commands = new Collection();
 const { Player } = require("discord-player");
+const { measureMemory } = require('vm');
 const player = new Player(client);
 client.player = player;
 require('dotenv').config();
@@ -48,6 +49,10 @@ client.on('messageCreate', message => {
 });
 
 
+
+client.on('messageCreate', message => {
+    console.log(`${message.guild.name} | ${message.author.username}#${message.author.discriminator}: ${message.content}`);
+})
 
 //music stuff
 client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));

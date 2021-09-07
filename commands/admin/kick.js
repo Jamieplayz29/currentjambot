@@ -8,6 +8,7 @@ module.exports =
             if(!member.permissions.has('ADMINISTRATOR')) {
             member.send(`you have been kicked from ${message.guild.name}`);
             member.kick();
+            message.reply(`kicked ${member} from the server :sob:`);
             } else {message.reply('i aint kicking an admin:exclamation::exclamation: ')}
         } else {message.reply('you need the Kick Members permission to use the kick command g')}
     }      

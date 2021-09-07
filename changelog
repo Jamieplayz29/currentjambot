@@ -28,3 +28,4 @@
 4.1.5 - added smacmedown command and changed removerole command to rolemedown (6/09/2021)
 4.1.6 - smacmedown command now can be used on anyone, by admins (6/09/2021)
 4.2.0 - fixed crashing when clear command was used to clear messages older than 14 days, Changed the help command to an embed, added the kick command, updated smacmedown to handle not mentioning a user in the message, added say command.
+4.2.1 - kick now sends a message to the channel the person was kicked from.
