@@ -54,7 +54,11 @@ client.on('messageCreate', message => {
     console.log(`${message.guild.name} in #${message.channel.name} | ${message.author.username}#${message.author.discriminator}: ${message.content}`);
 })
 
-//music stuff
+
+client.on('messageCreate', message => {
+    console.log(userIDs.length);
+})
+//music stuff :(
 client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));
 
 
@@ -75,17 +79,19 @@ client.on("messageCreate", message => {
 
 
 
-//telling people to shutup lol little trolling.com XDXD
-//               Cameron:               Steev:                Leandro:              Mine:
-const userIDs = ['725141738255024229', '625765223915061289', '381177173274263563',/*'498615291908194324'*/];
+
 
 client.on("messageCreate", function(message) {
-    let randomNumber = Math.floor(Math.random() * 9);
+    //telling people to shutup lol little trolling.com XDXD
+    //               Cameron:               Steev:                Leandro:              Mine:
+    const userIDs = ['725141738255024229', '625765223915061289','381177173274263563','498615291908194324'];
+
     const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){
+            let randomNumber = Math.floor(Math.random() * 9);
             message.reply(deadResponses[randomNumber]);
-            console.log(`said "${deadResponses[randomNumber]}" to ${message.author.username} in ${message.guild.name}` );
+            console.log(`said "${deadResponses[randomNumber]}" to ${message.author.username} in ${message.guild.name}`);
             break
         }
     }
