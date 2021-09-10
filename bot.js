@@ -55,9 +55,6 @@ client.on('messageCreate', message => {
 })
 
 
-client.on('messageCreate', message => {
-    console.log(userIDs.length);
-})
 //music stuff :(
 client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));
 
