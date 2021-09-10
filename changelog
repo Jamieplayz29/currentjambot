@@ -30,3 +30,4 @@
 4.2.0 - fixed crashing when clear command was used to clear messages older than 14 days, Changed the help command to an embed, added the kick command, updated smacmedown to handle not mentioning a user in the message, added say command.
 4.2.1 - kick now sends a message to the channel the person was kicked from.
 4.2.2 - fixed bot crashing when jambot was pinged on the smacmedown command and stopped jam from being able to be the victim of smacmedown
+4.2.3 - Fixed the smacmedown command so that it now catches the missing permission error and and sends a message on discord (10/09/2021)

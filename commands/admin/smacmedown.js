@@ -6,17 +6,16 @@ module.exports =
     description: 'removes all the users roles',
     execute(message, args) {
         if (message.member.permissions.has('ADMINISTRATOR')) {
-            let meAndBot = ['<@!709026936919293984>', '<@!498615291908194324>']
-            if(args[0] === '<@!709026936919293984>' ||args[0] === '<@!498615291908194324>') {
-                message.reply('Can\'t remove me or my supreme leader (jam)\'s roles mate');
+            let member = message.mentions.members.first();
+            if (!member) { 
+                message.reply('you need to ping someone to smac after =smacmedown')
+            } else if (args[0] == '<@!498615291908194324>') {
+                // Jam's ID
+                message.reply('Nah man really tried it :skull:')
             } else {
-                if (!args[0]) {message.reply('you need to ping someone to smac after =smacmedown')}
-                else {
-                let member = message.mentions.members.first();
-                member.roles.remove(member.roles.cache);
-                message.channel.send(`removed all roles from ${member} :rofl::rofl::rofl:`)
-                console.log(`removed all roles from ${member} in ${message.guild.name}.`);
-                }
+                member.roles.set([])
+                .then(member => message.channel.send(`removed all roles from ${member} :rofl::rofl::rofl:`))
+                .catch(err =>  message.reply(`I could\'nt remove roles from ${member}, probably because they have roles higher than me.`));
             }
         } else { message.reply('only admins can use the smacmedown command!:sob::sob:') }  
     }
