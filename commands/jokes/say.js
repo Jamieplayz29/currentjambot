@@ -4,6 +4,6 @@ module.exports =
     description: 'makes the bot say what the user says',
     execute(message, args) {
         message.delete()
-        message.channel.send(args[0])
+        message.channel.send(args.join (' '))
     }      
 } 
