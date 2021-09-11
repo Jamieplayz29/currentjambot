@@ -20,6 +20,7 @@
     "@discordjs/rest": "^0.1.0-canary.0",
     "@types/node": "^14.14.20",
     "bufferutil": "^4.0.2",
+    "discord-api-types": "^0.23.1",
     "discord-player": "^3.3.2",
     "discord-ytdl-core": "^5.0.0",
     "discord.js": "^13.0.1",
