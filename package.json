@@ -29,6 +29,7 @@
     "ffmpeg-static": "^4.4.0",
     "fluent-ffmpeg": "^2.1.2",
     "getjson": "^0.0.1",
+    "mongoose": "^6.0.5",
     "node-fetch": "^3.0.0",
     "node.js": "0.0.1-security",
     "opusscript": "0.0.7",

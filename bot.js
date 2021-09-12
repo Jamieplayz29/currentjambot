@@ -6,10 +6,12 @@ const client = new Client({
 const fs = require('fs');
 client.commands = new Collection();
 const { Player } = require("discord-player");
-const { measureMemory } = require('vm');
 const player = new Player(client);
 client.player = player;
 require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
 
 //actual banned words dud
@@ -37,11 +39,10 @@ client.on('messageCreate', message => {
 
     const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
-    const embed = new MessageEmbed()
 
     if (!client.commands.has(command)) return;
     try {
-        client.commands.get(command).execute(message, args, embed);
+        client.commands.get(command).execute(message, args);
     }catch(error) {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')

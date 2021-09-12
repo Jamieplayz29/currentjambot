@@ -1,10 +1,12 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports =
 {
     name: 'help',
     description: 'list of all commands the bot has',
-    execute(message, args, embed) {
+    execute(message, args) {
         if(message.member.permissions.has('ADMINISTRATOR')) {
-            embed
+            const HelpEmbed = new MessageEmbed()
             .setColor(0x3498DB)
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
@@ -17,9 +19,9 @@ module.exports =
             .setTimestamp()
             .setFooter(`help requested by ${message.author.username}`);
 
-            message.channel.send({ embeds: [embed] });
+            message.channel.send({ embeds: [HelpEmbed] });
         } else {
-            embed
+            const HelpEmbed = new MessageEmbed()
             .setColor(0x3498DB)
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
@@ -31,7 +33,7 @@ module.exports =
             .setTimestamp()
             .setFooter(`help requested by ${message.author.username}`);
 
-            message.channel.send({ embeds: [embed] });
+            message.channel.send({ embeds: [HelpEmbed] });
         }
     }      
 } 

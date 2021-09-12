@@ -32,3 +32,4 @@
 4.2.2 - fixed bot crashing when jambot was pinged on the smacmedown command and stopped jam from being able to be the victim of smacmedown
 4.2.3 - Fixed the smacmedown command so that it now catches the missing permission error and and sends a message on discord (10/09/2021)
 4.2.4 - changed kick to smacmeout, plus some smaller changes.
+4.3 - added a warn command with MongoDB, still very early in so there will probably be bugs, also no way to check warns atm but working on it for future updates.
