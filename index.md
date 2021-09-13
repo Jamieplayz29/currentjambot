@@ -24,6 +24,7 @@ PREFIX = =
 
 ```
 
+I run an instance of Jam Bot on [heroku](https://www.heroku.com/) 24/7, [here](https://discord.com/api/oauth2/authorize?client_id=709026936919293984&permissions=0&scope=bot%20applications.commands) is the invite link.
 
 
 
