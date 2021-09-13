@@ -3,13 +3,25 @@ const client = new Client({
     partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
     intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
 });
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
 const fs = require('fs');
 client.commands = new Collection();
 const { Player } = require("discord-player");
-const player = new Player(client);
-client.player = player;
+const DisTube = require('distube')
+const SoundCloudPlugin = require('@distube/soundcloud')
+const SpotifyPlugin = require('@distube/spotify')
 require('dotenv').config();
 const mongoose = require('mongoose');
+const distube = new DisTube.default(client, {
+	searchSongs: 1,
+	searchCooldown: 30,
+	leaveOnEmpty: true,
+	emptyCooldown: 30,
+	leaveOnFinish: true,
+	leaveOnStop: true,
+	plugins: [],
+})
 
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
@@ -39,22 +51,64 @@ client.on('messageCreate', message => {
 
     const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
+    const player = new Player(client);
 
     if (!client.commands.has(command)) return;
     try {
-        client.commands.get(command).execute(message, args);
+        client.commands.get(command).execute(message, args, distube);
     }catch(error) {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
     }
 });
 
+//slash commands
 
 
+const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+
+/*(async () => {
+	try {
+		console.log('Started refreshing application (/) commands.');
+
+		await rest.put(
+			Routes.applicationCommands(process.env.CLIENT_ID),
+			{ body: 'bruh' },
+		);
+
+		console.log('Successfully reloaded application (/) commands.');
+	} catch (error) {
+		console.error(error);
+	}
+})(); */
+
+// music embeds :)
+distube.on('playSong', (queue, song) => {
+    const playEmbed = new MessageEmbed()
+    .setDescription(`Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`)
+
+    queue.textChannel.send({ embeds: [playEmbed] });
+});
+
+distube.on('addSong', (queue, song) => {
+    const addSongEmbed = new MessageEmbed()
+    .setDescription(`Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`);
+
+    queue.textChannel.send({ embeds: [addSongEmbed] });
+});
 
 
-//music stuff :(
-client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`));
+distube.on('addList', (queue, playlist) => {
+    const addListEmbed = new MessageEmbed()
+    .setDescription(`Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue`)
+
+    queue.textChannel.send({ embeds: [addListEmbed] });
+});
+
+distube.on('error', (channel, error) => {
+	console.error(error)
+	channel.send(`An error encoutered: ${error.slice(0, 1979)}`)
+})
 
 
 

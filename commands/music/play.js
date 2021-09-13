@@ -1,9 +1,10 @@
-/*module.exports =
+module.exports =
 {
     name: 'play',
     description: 'plays a song',
-    async execute(message, args) { 
-	}
+    execute( message, args, distube) {
+        distube.play(message, args.join(' '))
 
+
+    }
 } 
-*/
