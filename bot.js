@@ -56,7 +56,7 @@ client.on('messageCreate', message => {
     if (!client.commands.has(command)) return;
     try {
         client.commands.get(command).execute(message, args, distube);
-    }catch(error) {
+    } catch(error) {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
     }
@@ -133,14 +133,15 @@ client.on("messageCreate", message => {
 client.on("messageCreate", function(message) {
     //telling people to shutup lol little trolling.com XDXD
     //               Cameron:               Steev:                Leandro:              Mine:
-    const userIDs = ['725141738255024229', '625765223915061289','381177173274263563',/*'498615291908194324'*/];
+const userIDs = ['725141738255024229', '625765223915061289',/*'381177173274263563','498615291908194324'*/];
 
     const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){
             let randomNumber = Math.floor(Math.random() * 9);
-            message.reply(deadResponses[randomNumber]);
-            console.log(`said "${deadResponses[randomNumber]}" to ${message.author.username} in ${message.guild.name}`);
+            message.reply(deadResponses[randomNumber])
+            .then (console.log(`said "${deadResponses[randomNumber]}" to ${message.author.username} in ${message.guild.name}`))
+            .catch (error => console.error(error));
             break
         }
     }
