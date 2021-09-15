@@ -110,7 +110,15 @@ distube.on('addList', (queue, playlist) => {
 
 distube.on('error', (channel, error) => {
 	console.error(error)
-	channel.send(`An error encoutered: ${error.slice(0, 1979)}`)
+	channel.send(`An error encoutered: ${error}`)
+    .catch(err => console.log(err))
+})
+
+distube.on('disconnect', queue => {
+    const disconnectEmbed = new MessageEmbed()
+    .setDescription('Disconnected from the VC')
+
+    queue.textChannel.send({ embeds: [disconnectEmbed] })
 })
 
 
