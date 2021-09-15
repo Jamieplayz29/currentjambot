@@ -54,17 +54,14 @@ client.on('messageCreate', message => {
     const player = new Player(client);
 
     if (!client.commands.has(command)) return;
-    if (message.guild.me.permissions.has('SEND_MESSAGES')) {
-        try {
-            client.commands.get(command).execute(message, args, distube);
-        } catch(error) {
-            console.error(error);
-            message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
-        }
-    } else {
-        const sendMessagesEmbed = new MessageEmbed()
-        .setDescription(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`)
-        message.member.send({ embeds: [sendMessagesEmbed] });
+
+    if (!message.guild.me.permissions.has('SEND_MESSAGES')) return message.member.send(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`);
+    
+    try {
+        client.commands.get(command).execute(message, args, distube);
+    } catch(error) {
+        console.error(error);
+        message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
     }
 });
 

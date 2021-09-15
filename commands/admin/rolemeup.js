@@ -6,7 +6,7 @@ module.exports =
 
         if(message.author.bot) return;
 
-        if(!args[0]) {message.delete(); return};
+        if(!args[0]) return message.delete()
 
         try {
             if(isNaN(args[0])) {

@@ -11,13 +11,14 @@ module.exports =
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
-            .addField("Commands", "__ping__: sends a ping to the jambot server to check if the bot is online. \n __say__ <message>: tells the bot to say something \n __kick__: kicks a user from the server. **You must be able to kick someone first** \n ~~play~~: coming soon:tm:")
-            .addField('Admin Commands', '__clear__ <number of messages>: deletes up to 100 messages at a time \n __smacmedown__ <mention>: remove all of someones roles ')
+            .addField("Commands", "__ping__: Sends a ping to the jambot server to check if the bot is online. \n __say__ <message>: Tells the bot to say something \n __kick__: Kicks a user from the server. **You must be able to kick someone first** ")
+            .addField('Music Commands', '__play__ <Song name/URL>: Plays a song or a playlist \n __skip__: Skips the currently playing song \n __stop__: Stops the music and disconnects the bot \n __queue__: Shows the songs currently in the queue')
+            .addField('Admin Commands', '__clear__ <number of messages>: Deletes up to 100 messages at a time \n __Smacmedown__ <mention>: Remove all of someones roles ')
             .addField('Development', 'Jam Bots source code is available [here](https://github.com/Jamieplayz29/currentjambot) on GitHub. \n Man also has [PayPal](https://www.paypal.com/paypalme/JamiePlayZ) to pay them bills innit')
             .setThumbnail('https://i.imgur.com/PMauoQo.jpeg')
 
             .setTimestamp()
-            .setFooter(`help requested by ${message.author.username}`);
+            .setFooter(`help requested by ${message.author.username}`, `https://cdn.discordapp.com/avatars/${message.member.user.id}/${message.member.user.avatar}.png`);
 
             message.channel.send({ embeds: [HelpEmbed] });
         } else {
@@ -26,12 +27,13 @@ module.exports =
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
-            .addField("Commands", "__ping__: sends a ping to the jambot server to check if the bot is online. \n __say__ <message>: tells the bot to say something \n __kick__: kicks a user from the server. **You must be able to kick someone first** \n ~~play~~: coming soon:tm:")
+            .addField("Commands", "__ping__: Sends a ping to the jambot server to check if the bot is online. \n __say__ <message>: Tells the bot to say something \n __kick__: Kicks a user from the server. **You must be able to kick someone first** ")
+            .addField('Music Commands', '__play__ <Song name/URL>: Plays a song or a playlist \n __skip__: Skips the currently playing song \n __stop__: Stops the music and disconnects the bot \n __queue__: Shows the songs currently in the queue')
             .addField('Development', 'Jam Bots source code is available [here](https://github.com/Jamieplayz29/currentjambot) on GitHub. \n Man also has [PayPal](https://www.paypal.com/paypalme/JamiePlayZ) to pay them bills innit')            
             .setThumbnail('https://i.imgur.com/PMauoQo.jpeg')
             
             .setTimestamp()
-            .setFooter(`help requested by ${message.author.username}`);
+            .setFooter(`help requested by ${message.author.username}`, `https://cdn.discordapp.com/avatars/${message.member.user.id}/${message.member.user.avatar}.png`);
 
             message.channel.send({ embeds: [HelpEmbed] });
         }
