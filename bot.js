@@ -120,8 +120,9 @@ client.on("messageCreate", message => {
     let content = message.content;
     for (let i = 0; i < noNoWords.length; i++) {
         if (content.includes(noNoWords[i])){  
-            message.delete();
-            console.log(`${noNoWords[i]} was sent by ${message.author.username} and was deleted`)
+            message.delete()
+            .then(message => console.log(`${noNoWords[i]} was sent by ${message.author.username} and was deleted`))
+            .catch (error => console.error(error))
             break
         } 
     }
