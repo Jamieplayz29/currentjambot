@@ -112,7 +112,7 @@ distube.on('error', (channel, error) => {
 	console.error(error)
 	channel.send(`An error encoutered: ${error}`)
     .catch(err => console.log(err))
-})
+}) 
 
 distube.on('disconnect', queue => {
     const disconnectEmbed = new MessageEmbed()
