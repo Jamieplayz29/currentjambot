@@ -3,8 +3,10 @@ const client = new Client({
     partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
     intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
 });
+const scopes = ['rpc', 'rpc.api', 'messages.read'];
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const clientID = process.env.CLIENT_ID
 const fs = require('fs');
 client.commands = new Collection();
 const { Player } = require("discord-player");
@@ -22,6 +24,7 @@ const distube = new DisTube.default(client, {
 	leaveOnStop: true,
 	plugins: [],
 })
+
 
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
@@ -54,6 +57,8 @@ client.on('messageCreate', message => {
     const player = new Player(client);
 
     if (!client.commands.has(command)) return;
+
+    if (message.channel.name == 'general') return message.reply('smh no bot commands in general :raised_hand:');
 
     if (!message.guild.me.permissions.has('SEND_MESSAGES')) return message.member.send(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`);
     
