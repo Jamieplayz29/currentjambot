@@ -53,17 +53,17 @@ client.on('messageCreate', message => {
     if (!message.content.startsWith(process.env.PREFIX)) return;
 
     const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-    const player = new Player(client);
+    const commandName = args.shift().toLowerCase();
+    const command = client.commands.get(commandName)
 
-    if (!client.commands.has(command)) return;
+    if (!client.commands.has(commandName)) return;
 
     if (message.channel.name == 'general') return message.reply('smh no bot commands in general :raised_hand:');
 
     if (!message.guild.me.permissions.has('SEND_MESSAGES')) return message.member.send(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`);
     
     try {
-        client.commands.get(command).execute(message, args, distube);
+        command.execute(message, args, distube);
     } catch(error) {
         console.error(error);
         message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
