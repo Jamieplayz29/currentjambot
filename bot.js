@@ -56,7 +56,7 @@ client.on('messageCreate', message => {
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if (!client.commands.has(commandName)) return;
+    if (!command && client.commands.has(commandName)) return;
 
     if (message.channel.name == 'general') return message.reply('smh no bot commands in general :raised_hand:');
 
@@ -71,7 +71,6 @@ client.on('messageCreate', message => {
 });
 
 //slash commands
-
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 

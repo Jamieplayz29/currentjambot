@@ -2,6 +2,7 @@ module.exports =
 {
     name: 'queue',
     description: 'displays the songs in the queue',
+    aliases: ['q'],
     execute(message, args, distube) {
         const queue = distube.getQueue(message)
         if (!queue) {

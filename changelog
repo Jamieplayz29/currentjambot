@@ -37,3 +37,4 @@
 4.4.1 - fixed a critical bug that would cause the bot to crash due to a DiscordAPI Error when the bot could not send a message after a command because it did not have the send messages permission. (14/09/2021)
 4.4.2 - shortened some if statements in the code, added music commands to the help command and added the message authors profile pic to the footer of the help command (15/09/2021)
 4.4.3 - added a pause command and fixed the error code for distube (15/09/2021)
+4.5 - added aliases to all music commands. (23/09/2021)
