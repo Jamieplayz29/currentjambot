@@ -38,4 +38,4 @@
 4.4.2 - shortened some if statements in the code, added music commands to the help command and added the message authors profile pic to the footer of the help command (15/09/2021)
 4.4.3 - added a pause command and fixed the error code for distube (15/09/2021)
 4.5 - added aliases to all music commands. (23/09/2021)
-4.5.1 - added spotify implementation
+4.5.1 - added spotify and soundcloud to music and changed the help command to display this (24/08/2021)

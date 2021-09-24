@@ -11,7 +11,7 @@ const fs = require('fs');
 client.commands = new Collection();
 const { Player } = require("discord-player");
 const DisTube = require('distube')
-const SoundCloudPlugin = require('@distube/soundcloud')
+const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require("@distube/spotify");
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -23,14 +23,15 @@ const distube = new DisTube.default(client, {
 	leaveOnFinish: true,
 	leaveOnStop: true,
 	plugins: [new SpotifyPlugin({
-        parallel: true,
-        emitEventsAfterFetching: false,
-        api: {
-          clientId: process.env.SPOTIFY_CLIENT_ID,
-          clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-        }
-      }),
-    ],
+                parallel: true,
+                emitEventsAfterFetching: false,
+                api: {
+                clientId: process.env.SPOTIFY_CLIENT_ID,
+                clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+                }
+            }),
+            new SoundCloudPlugin()
+        ],
 })
 
 
