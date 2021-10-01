@@ -22,6 +22,7 @@ const distube = new DisTube.default(client, {
 	emptyCooldown: 30,
 	leaveOnFinish: true,
 	leaveOnStop: true,
+    youtubeCookie: process.env.YOUTUBE_COOKIE,
 	plugins: [new SpotifyPlugin({
                 parallel: true,
                 emitEventsAfterFetching: false,
