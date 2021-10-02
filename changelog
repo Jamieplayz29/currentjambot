@@ -39,3 +39,4 @@
 4.4.3 - added a pause command and fixed the error code for distube (15/09/2021)
 4.5 - added aliases to all music commands. (23/09/2021)
 4.5.1 - added spotify and soundcloud to music and changed the help command to display this (24/08/2021)
+4.5.2 - added jump and previous to music commands. (2/09/2021)
