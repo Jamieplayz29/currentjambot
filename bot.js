@@ -80,6 +80,10 @@ client.on('messageCreate', message => {
     }
 });
 
+client.on('messageCreate', message => {
+    console.log(`${message.guild.name} in #${message.channel.name} | ${message.author.username}#${message.author.discriminator}: ${message.content}`);
+})
+
 //slash commands
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
