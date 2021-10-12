@@ -1,21 +1,15 @@
-const {Client, Intents, Discord, Collection, MessageEmbed, MessageButton, MessageActionRow, CommandInteractionOptionResolver,} = require('discord.js');
+const {Client, Collection, MessageEmbed} = require('discord.js');
 const client = new Client({
     partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
     intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
 });
-const scopes = ['rpc', 'rpc.api', 'messages.read'];
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-const clientID = process.env.CLIENT_ID
 const fs = require('fs');
 client.commands = new Collection();
-const { Player } = require("discord-player");
 const DisTube = require('distube')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require("@distube/spotify");
 require('dotenv').config();
 const mongoose = require('mongoose');
-const queue = require('./commands/music/queue');
 const distube = new DisTube.default(client, {
 	searchSongs: 1,
 	searchCooldown: 30,
@@ -39,15 +33,11 @@ const distube = new DisTube.default(client, {
 
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
-
-//actual banned words dud
-const noNoWords = ['https://tenor.com/view/pog-frog-frog-pog-frog-dance-gif-20735320', 'https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075', 'https://tenor.com/view/caress-fruits-gif-12997033', 'https://media.discordapp.net/attachments/610587194528104452/730189439522832414/do_not_disrespect.gif', 'https://tenor.com/view/old-man-guy-senior-walker-gerald-gif-17449313'];
-
 //log the login in console... type beat
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
- 
+
 
 //command handler
 fs.readdirSync('./commands').forEach(dirs => {
@@ -72,7 +62,7 @@ client.on('messageCreate', message => {
     if (message.channel.name == 'general') return message.reply('smh no bot commands in general :raised_hand:');
 
     if (!message.guild.me.permissions.has('SEND_MESSAGES')) return message.member.send(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`);
-    
+
     try {
         command.execute(message, args, distube);
     } catch(error) {
@@ -87,9 +77,9 @@ client.on('messageCreate', message => {
 
 //slash commands
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+/*const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
-/*(async () => {
+(async () => {
 	try {
 		console.log('Started refreshing application (/) commands.');
 
@@ -131,7 +121,7 @@ distube.on('error', (channel, error) => {
 	console.error(error)
 	channel.send(`An error encoutered: ${error}`)
     .catch(err => console.log(err))
-}) 
+})
 
 distube.on('disconnect', queue => {
     const disconnectEmbed = new MessageEmbed()
@@ -141,15 +131,17 @@ distube.on('disconnect', queue => {
 })
 
 //banned word removal type beat
+
+const noNoWords = ['https://tenor.com/view/pog-frog-frog-pog-frog-dance-gif-20735320', 'https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075', 'https://tenor.com/view/caress-fruits-gif-12997033', 'https://media.discordapp.net/attachments/610587194528104452/730189439522832414/do_not_disrespect.gif', 'https://tenor.com/view/old-man-guy-senior-walker-gerald-gif-17449313'];
+
 client.on("messageCreate", message => {
     let content = message.content;
     for (let i = 0; i < noNoWords.length; i++) {
-        if (content.includes(noNoWords[i])){  
+        if (content.includes(noNoWords[i])){
             message.delete()
-            .then(message => console.log(`${noNoWords[i]} was sent by ${message.author.username} and was deleted`))
             .catch (error => console.error(error))
             break
-        } 
+        }
     }
 })
 
