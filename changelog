@@ -6,7 +6,7 @@
 1.0.4 - new token
 1.0.5 - banned 'dont disrespect staff' gif
 1.0.6 - unbanned a gif 'naughty side' (11/12/20)
-1.0.7 - removed gerald walker gif (11/02/2021) 
+1.0.7 - removed gerald walker gif (11/02/2021)
 1.1 - switched to config.json (04/03/2021)
 2.0 (beta) - added music! (05/03/2021)
 2.0 (beta2) - stopped ping command from triggering "not a valid command" message
@@ -40,3 +40,4 @@
 4.5 - added aliases to all music commands. (23/09/2021)
 4.5.1 - added spotify and soundcloud to music and changed the help command to display this (24/08/2021)
 4.5.2 - added jump and previous to music commands. (2/09/2021)
+4.5.3 - added the server info command (12/10/2021)

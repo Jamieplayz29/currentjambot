@@ -4,7 +4,7 @@ module.exports =
 {
     name: 'pause',
     description: 'pauses the song',
-    execute(message, args) {
+    execute(message, args, distube) {
         distube.pause(message)
 
         const pauseEmbed = new MessageEmbed()
