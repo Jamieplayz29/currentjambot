@@ -59,8 +59,6 @@ client.on('messageCreate', message => {
 
     if (!command && client.commands.has(commandName)) return;
 
-    if (message.channel.name == 'general') return message.reply('smh no bot commands in general :raised_hand:');
-
     if (!message.guild.me.permissions.has('SEND_MESSAGES')) return message.member.send(`I need the 'SEND_MESSAGES' permission to be able to reply to commands in  the server: ${message.guild.name}`);
 
     try {
