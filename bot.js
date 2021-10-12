@@ -1,4 +1,4 @@
-const {Client, Intents, Discord, Collection, MessageEmbed} = require('discord.js');
+const {Client, Intents, Discord, Collection, MessageEmbed, MessageButton, MessageActionRow, CommandInteractionOptionResolver,} = require('discord.js');
 const client = new Client({
     partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
     intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
@@ -15,6 +15,7 @@ const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require("@distube/spotify");
 require('dotenv').config();
 const mongoose = require('mongoose');
+const queue = require('./commands/music/queue');
 const distube = new DisTube.default(client, {
 	searchSongs: 1,
 	searchCooldown: 30,
@@ -139,8 +140,6 @@ distube.on('disconnect', queue => {
     queue.textChannel.send({ embeds: [disconnectEmbed] })
 })
 
-
-
 //banned word removal type beat
 client.on("messageCreate", message => {
     let content = message.content;
@@ -177,6 +176,7 @@ const userIDs = ['725141738255024229', '625765223915061289',/*'38117717327426356
     }
 });
 
+client.on('error', (err) => {console.error(err)});
 
 //login ting
 client.login(process.env.DISCORD_TOKEN);
