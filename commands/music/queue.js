@@ -1,3 +1,6 @@
+const { MessageEmbed } = require("discord.js")
+const client = require('../../bot');
+
 module.exports =
 {
     name: 'queue',
@@ -5,21 +8,34 @@ module.exports =
     aliases: ['q'],
     execute(message, args, distube) {
         const queue = distube.getQueue(message)
-        if (!queue) {
-            message.channel.send('Nothing playing right now!')
-        } else {
-        message.channel.send(
-            `Current queue:\n${queue.songs
-                .map(
-                    (song, id) =>
-                        `**${id ? id : 'Playing'}**. ${song.name} - \`${
-                            song.formattedDuration
-                        }\``,
-                )
-                .slice(0, 10)
-                .join('\n')}`,
-			)
-		}
-	}
-}      
 
+
+
+        // embeds
+        const nothingPlaying = new MessageEmbed()
+        .setDescription('Nothing playing right now!');
+
+        if(!queue) return message.channel.send({ embeds: [nothingPlaying]} );
+
+        let embeds = []
+
+        for (i = 0; i < 5; i++)
+        {
+         embeds.push(new Discord.MessageEmbed()
+                .setTitle('Current Queue:')
+                .setDescription(queue.songs
+                                    .map(
+                                        (song, id) =>
+                                            `**${id ? id : 'Playing'}**. ${song.name} - \`${
+                                                song.formattedDuration
+                                            }\``,
+                                )
+                                .slice((i*20), (i+1)*20)
+                                .join('\n')
+                            ))
+        }
+
+    message.channel.createSlider(message.author.id,embeds, "Next", "Back")
+
+	}
+}

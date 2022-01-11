@@ -144,7 +144,11 @@ client.on("messageCreate", message => {
 })
 
 
-
+client.on("messageCreate", message => {
+        if(message.content.includes("[Epic")) {
+            message.delete();
+        }
+})
 
 
 

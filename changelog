@@ -41,3 +41,4 @@
 4.5.1 - added spotify and soundcloud to music and changed the help command to display this (24/08/2021)
 4.5.2 - added jump and previous to music commands. (2/09/2021)
 4.5.3 - added the server info command (12/10/2021)
+4.5.4 - added a timeout command
