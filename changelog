@@ -42,3 +42,4 @@
 4.5.2 - added jump and previous to music commands. (2/09/2021)
 4.5.3 - added the server info command (12/10/2021)
 4.5.4 - added a timeout command
+4.6 - fixed timeout command so now it checks users roles to make sure that they have a lower role to stop missing permissions API error (19/01/2022)
