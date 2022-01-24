@@ -20,18 +20,11 @@ module.exports =
 
         message.guild.members.fetch(process.env.CLIENT_ID).then( (bot) => {
             if(message.mentions.members.first().roles.highest.position < bot.roles.highest.position)
-                return member.timeout(time, reason);
+                return member.timeout(time, reason).then(message.reply({ embeds: [timeOutEmbed] }));
             else {
-                return message.channel.send({ embeds: [errorEmbed] });
+                return message.reply({ embeds: [errorEmbed] });
             }
     
             })
-            
-        member.timeout(time, reason)
-        .then(message.reply({embeds: [ timeOutEmbed ] }))
-        .catch( err => {
-            console.error(err)
-            message.reply({embeds: [ errorEmbed ]})
-        });
     }
 } 
