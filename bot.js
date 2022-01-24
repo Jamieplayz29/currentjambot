@@ -65,7 +65,7 @@ client.on('messageCreate', message => {
         command.execute(message, args, distube);
     } catch(error) {
         console.error(error);
-        message.reply('Uh oh! It looks like you have encountered a glitch up in the system, please try again later! || <@498615291908194324> fix yo dead bot ||')
+        message.reply('Either an error occured or that command doesn\'t exist, please check the command and use *=help* to see what commands I have!')
     }
 });
 
