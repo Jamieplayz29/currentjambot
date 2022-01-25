@@ -69,9 +69,10 @@ client.on('messageCreate', message => {
     }
 });
 
-client.on('messageCreate', message => {
+// logging disabled
+/* client.on('messageCreate', message => {
     console.log(`${message.guild.name} in #${message.channel.name} | ${message.author.username}#${message.author.discriminator}: ${message.content}`);
-})
+}) */
 
 //slash commands
 

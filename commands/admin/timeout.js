@@ -18,13 +18,14 @@ module.exports =
 
         if(isNaN(args[1])) return message.reply('Please enter a time in minutes after pinging the user, use the command format *=timeout <@user> [time in minutes] \'reason\'*');
 
-        message.guild.members.fetch(process.env.CLIENT_ID).then( (bot) => {
-            if(message.mentions.members.first().roles.highest.position < bot.roles.highest.position)
-                return member.timeout(time, reason).then(message.reply({ embeds: [timeOutEmbed] }));
-            else {
-                return message.reply({ embeds: [errorEmbed] });
-            }
-    
+        message.guild.members.fetch(process.env.CLIENT_ID)
+            .then( (bot) => {
+                if(message.mentions.members.first().roles.highest.position < bot.roles.highest.position)
+                    return member.timeout(time, reason).then(message.reply({ embeds: [timeOutEmbed] }));
+                else {
+                    return message.reply({ embeds: [errorEmbed] });
+                }
             }) 
+
     }
 } 
