@@ -171,7 +171,26 @@ const userIDs = [/*'725141738255024229'*/ , '625765223915061289',/*'381177173274
     }
 });
 
+//smiley dealer
+client.on("messageCreate", message => { 
+    if(message.content.includes('😂')) { message.react('<:smileyJoy:955917291936186432>') }
+    if(message.content.includes('😳')) { message.react('<:SmileyFlushed:955941065846824970>') }
+    if(message.content.includes('👼')) { message.react('<a:SmileyAngel:955945220892155984>') }
+    if(message.content.includes('😠')) { message.react('<:SmileyAngry:955941065834242048>') } 
+});
+
+// if(message.content.includes('')) { message.react('') } 
+
+
+
+
+
+
+
+
 client.on('error', (err) => {console.error(err)});
+
+
 
 //login ting
 client.login(process.env.DISCORD_TOKEN);
