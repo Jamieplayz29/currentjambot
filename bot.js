@@ -172,11 +172,25 @@ const userIDs = [/*'725141738255024229'*/ , '625765223915061289',/*'381177173274
 });
 
 //smiley dealer
+client.on("messageCreate", message => {
+    let emojis = new Map([
+        ['']
+
+    ])
+})
+
+
+
 client.on("messageCreate", message => { 
     if(message.content.includes('😂')) { message.react('<:smileyJoy:955917291936186432>') }
     if(message.content.includes('😳')) { message.react('<:SmileyFlushed:955941065846824970>') }
     if(message.content.includes('👼')) { message.react('<a:SmileyAngel:955945220892155984>') }
     if(message.content.includes('😠')) { message.react('<:SmileyAngry:955941065834242048>') } 
+    if(message.content.includes('🖤')) { message.react('<a:SmileyBlackHeart:955941065918140496>') } 
+    if(message.content.includes('💙')) { message.react('<a:SmileyBlueHeart:955941066522103838>') } 
+    if(message.content.includes('😊')) { message.react('<:SmileyBlush:955941065448374364>') }
+    if(message.content.includes('👏')) { message.react('<a:SmileyClap:955941066526314496>') } 
+    if(message.content.includes('😎')) { message.react('<a:SmileyCool:955941067587457064>') } 
 });
 
 // if(message.content.includes('')) { message.react('') } 
