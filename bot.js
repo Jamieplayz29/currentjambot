@@ -129,21 +129,6 @@ distube.on('disconnect', queue => {
     queue.textChannel.send({ embeds: [disconnectEmbed] })
 })
 
-//banned word removal type beat
-
-const noNoWords = ['https://tenor.com/view/pog-frog-frog-pog-frog-dance-gif-20735320', 'https://media.discordapp.net/attachments/562740967644594186/680193230142439446/1472904618094.gif', 'https://tenor.com/view/projectile-bird-poop-bird-poop-gif-11626075', 'https://tenor.com/view/caress-fruits-gif-12997033', 'https://media.discordapp.net/attachments/610587194528104452/730189439522832414/do_not_disrespect.gif', 'https://tenor.com/view/old-man-guy-senior-walker-gerald-gif-17449313'];
-
-client.on("messageCreate", message => {
-    let content = message.content;
-    for (let i = 0; i < noNoWords.length; i++) {
-        if (content.includes(noNoWords[i])){
-            message.delete()
-            .catch (error => console.error(error))
-            break
-        }
-    }
-})
-
 
 client.on("messageCreate", message => {
         if(message.content.includes("[Epic")) {
