@@ -165,6 +165,12 @@ client.on("messageCreate", message => {
 })
 
 
+client.on("messageCreate", message => {
+    if(message.author.id == '946897120185708574') {
+        message.channel.send('<@973972428290138193>')
+    }
+})
+
 
 client.on("messageCreate", message => { 
     if(message.content.includes('😂')) { message.react('<:smileyJoy:955917291936186432>') }
