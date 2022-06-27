@@ -1,0 +1,2 @@
+cdn.discordapp.com/emojis/ID.png?v=1
+cdn.discordapp.com/emojis/ID.gif?v=1

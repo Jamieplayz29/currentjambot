@@ -142,9 +142,10 @@ client.on("messageCreate", message => {
 client.on("messageCreate", function(message) {
     //telling people to shutup lol little trolling.com XDXD
     //               Cameron:               Steev:                Leandro:              Mine:
-const userIDs = ['725141738255024229' , '625765223915061289',/*'381177173274263563','498615291908194324'*/];
+const userIDs = ['725141738255024229' , '625765223915061289',/*'381177173274263563'*/,/* '498615291908194324' */];
 
-    const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź']
+
+    const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź', 'yoooo thats crazy but who asked']
     for (let i = 0; i < userIDs.length; i++) {
         if (message.author.id === userIDs[i]){
             let randomNumber = Math.floor(Math.random() * 9);
@@ -172,8 +173,33 @@ client.on("messageCreate", message => {
 })
 
 
-client.on("messageCreate", message => { 
-    if(message.content.includes('😂')) { message.react('<:smileyJoy:955917291936186432>') }
+client.on("messageCreate", message => {
+    const emojis = new Map([
+        ['😂', '<:smileyJoy:955917291936186432>'],
+        ['😳', '<:SmileyFlushed:955941065846824970>'],
+        ['👼', '<:SmileyFlushed:955941065846824970>'],
+        ['😠', '<:SmileyAngry:955941065834242048>'],
+        ['🖤', '<a:SmileyBlackHeart:955941065918140496>'],
+        ['💙', '<a:SmileyBlueHeart:955941066522103838>'],
+        ['😊', '<:SmileyBlush:955941065448374364>'],
+        ['👏', '<a:SmileyClap:955941066526314496>'],
+        ['🙂', '<:SmileySlightSmile:955941066551480340>'],
+        ['👍', '<:SmileyThumbsUp:955941066505338960>']
+        ['😯', '<:SmileyHushed:955941066249486366> ']
+        ['😦', '<:SmileyFrowning:955941066245279794> ']
+        ['😐', '<:SmileyFrowning:955941066245279794>']
+    ]) 
+
+    for (let i = 0; i < emojis.size ; i++) {
+        if (emojis.has(message.content)) {
+            message.react(emojis.get(message.content))
+            break
+        }
+
+
+    }
+
+    /* if(message.content.includes('😂')) { message.react('<:smileyJoy:955917291936186432>') }
     if(message.content.includes('😳')) { message.react('<:SmileyFlushed:955941065846824970>') }
     if(message.content.includes('👼')) { message.react('<a:SmileyAngel:955945220892155984>') }
     if(message.content.includes('😠')) { message.react('<:SmileyAngry:955941065834242048>') } 
@@ -181,7 +207,13 @@ client.on("messageCreate", message => {
     if(message.content.includes('💙')) { message.react('<a:SmileyBlueHeart:955941066522103838>') } 
     if(message.content.includes('😊')) { message.react('<:SmileyBlush:955941065448374364>') }
     if(message.content.includes('👏')) { message.react('<a:SmileyClap:955941066526314496>') } 
-    if(message.content.includes('😎')) { message.react('<a:SmileyCool:955941067587457064>') } 
+    if(message.content.includes('🙂')) { message.react('<:SmileySlightSmile:955941066551480340>') }
+    if(message.content.includes('👍')) { message.react('<:SmileyThumbsUp:955941066505338960>') }
+    if(message.content.includes('')) { message.react('') }
+    if(message.content.includes('')) { message.react('') }
+    if(message.content.includes('')) { message.react('') }
+    */
+     
 });
 
 // if(message.content.includes('')) { message.react('') } 
