@@ -159,35 +159,38 @@ const userIDs = ['725141738255024229' , '625765223915061289',/*'3811771732742635
 
 //smiley dealer
 client.on("messageCreate", message => {
-    let emojis = new Map([
-        ['']
-
-    ])
-})
-
-
-client.on("messageCreate", message => {
-    if(message.author.id == '946897120185708574') {
-        message.channel.send('<@973972428290138193>')
-    }
-})
-
-
-client.on("messageCreate", message => {
     const emojis = new Map([
         ['😂', '<:smileyJoy:955917291936186432>'],
         ['😳', '<:SmileyFlushed:955941065846824970>'],
-        ['👼', '<:SmileyFlushed:955941065846824970>'],
+        ['👼', '<a:SmileyAngel:955945220892155984> '],
         ['😠', '<:SmileyAngry:955941065834242048>'],
         ['🖤', '<a:SmileyBlackHeart:955941065918140496>'],
         ['💙', '<a:SmileyBlueHeart:955941066522103838>'],
         ['😊', '<:SmileyBlush:955941065448374364>'],
         ['👏', '<a:SmileyClap:955941066526314496>'],
         ['🙂', '<:SmileySlightSmile:955941066551480340>'],
-        ['👍', '<:SmileyThumbsUp:955941066505338960>']
-        ['😯', '<:SmileyHushed:955941066249486366> ']
-        ['😦', '<:SmileyFrowning:955941066245279794> ']
-        ['😐', '<:SmileyFrowning:955941066245279794>']
+        ['👍', '<:SmileyThumbsUp:955941066505338960>'],
+        ['😯', '<:SmileyHushed:955941066249486366> '],
+        ['😦', '<:SmileyFrowning:955941066245279794>'],
+        ['😐', '<:SmileyFrowning:955941066245279794>'],
+        ['😐', '<:SmileyNeutralFace:955941066140434472>'],
+        ['😁', '<:SmileyGrin:955941066014597200>'],
+        ['🤔', '<:SmileyThink:955941065960071198>'],
+        ['🙃', '<:SmileyUpsideDown:955941065951682621>'],
+        ['🤠', '<:SmileyCowboy:955941065943306260>'],
+        ['💩', '<:SmileyPoop:955941065708433448>'],
+        ['🍇', '<:SmileyGrape:955941065662267423>'],
+        ['🍋', '<:SmileyLemon:955941065536438382>'],
+        ['🆒', '<:cool_1:520062631390740491>'],
+        ['😬', '<a:SmileyGrimace:955941067377766470>'],
+        ['😡', '<a:SmileyRage:955941067377762394>'],
+        ['🙄', '<a:SmileyRollingEyes:955941067352600576>'],
+        ['🤮', '<a:SmileyVomiting:955941067012866098>'],
+        ['😘', '<a:SmileyKissingHeart:955941067012857867>'],
+        ['👺', '<a:SmileyDevil:955941066991865927>'],
+        ['💀', '<a:SmileySkull:955941066941542450>'],
+        ['😭', '<a:SmileyCry:955941066694082652>'],
+        ['👹', '<a:SmileyJapaneseGoblin:955941066002006097>']
     ]) 
 
     for (let i = 0; i < emojis.size ; i++) {
