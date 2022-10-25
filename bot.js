@@ -142,7 +142,7 @@ client.on("messageCreate", message => {
 client.on("messageCreate", function(message) {
     //telling people to shutup lol little trolling.com XDXD
     //               Cameron:               Steev:             John friend:         Leandro:              Mine:
-const userIDs = ['725141738255024229' , '625765223915061289', '300163171291889664'/*'381177173274263563'*/,/* '498615291908194324' */];
+const userIDs = ['725141738255024229' , '625765223915061289' /*'300163171291889664', *//*'381177173274263563'*/,/* '498615291908194324' */];
 
 
     const deadResponses = ['Shush please, thanks!!', 'Did i ask', 'If i had a NASA satalite i would use it to try find who asked', 'Sick', 'Ok', 'Omds can u please shush', 'You remember when i asked for your opinion? Nah me neither', 'Cicho bądź', 'Cheeto bądź', 'yoooo thats crazy but who asked']
