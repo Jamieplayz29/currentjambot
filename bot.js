@@ -1,10 +1,23 @@
-const {Client, Collection, MessageEmbed} = require('discord.js');
+const {Client, Collection, MessageEmbed, GatewayIntentBits, Partials, Events, ReactionUserManager, Routes, REST } = require('discord.js');
 const client = new Client({
-    partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
-    intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
+    partials: [
+        Partials.Channel,
+        Partials.GuildMember,
+        Partials.Message,
+        Partials.Reaction
+    ],
+
+    intents: [    
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildBans,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildEmojisAndStickers
+    ],
 });
-const fs = require('fs');
-client.commands = new Collection();
+const fs = require('node:fs');
+const path = require('node:path');
 const DisTube = require('distube')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -34,12 +47,84 @@ const distube = new DisTube.default(client, {
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
 //log the login in console... type beat
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
+client.once(Events.ClientReady, c => {
+	console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
 
 //command handler
+client.commands = new Collection();
+
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	// Set a new item in the Collection with the key as the command name and the value as the exported module
+	if ('data' in command && 'execute' in command) {
+		client.commands.set(command.data.name, command);
+	} else {
+		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+	}
+}
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = interaction.client.commands.get(interaction.commandName);
+
+	if (!command) {
+		console.error(`No command matching ${interaction.commandName} was found.`);
+		return;
+	}
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
+
+client.on(Events.InteractionCreate, interaction => {
+    if (!interaction.isChatInputCommand()) return;
+    
+});
+
+
+// Slash commands
+
+const commands = [];
+
+// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	commands.push(command.data.toJSON());
+}
+
+// Construct and prepare an instance of the REST module
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
+
+// and deploy your commands!
+(async () => {
+	try {
+		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+
+		// The put method is used to fully refresh all commands in the guild with the current set
+		const data = await rest.put(
+			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+			{ body: commands },
+		);
+
+		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+	} catch (error) {
+		// And of course, make sure you catch and log any errors!
+		console.error(error);
+	}
+})();
+
+
 fs.readdirSync('./commands').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}`).filter(files => files.endsWith('.js'));
 
@@ -73,25 +158,6 @@ client.on('messageCreate', message => {
 /* client.on('messageCreate', message => {
     console.log(`${message.guild.name} in #${message.channel.name} | ${message.author.username}#${message.author.discriminator}: ${message.content}`);
 }) */
-
-//slash commands
-
-/*const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
-
-(async () => {
-	try {
-		console.log('Started refreshing application (/) commands.');
-
-		await rest.put(
-			Routes.applicationCommands(process.env.CLIENT_ID),
-			{ body: 'bruh' },
-		);
-
-		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(error);
-	}
-})(); */
 
 // music embeds :)
 distube.on('playSong', (queue, song) => {
@@ -129,12 +195,6 @@ distube.on('disconnect', queue => {
     queue.textChannel.send({ embeds: [disconnectEmbed] })
 })
 
-
-client.on("messageCreate", message => {
-        if(message.content.includes("[Epic")) {
-            message.delete();
-        }
-})
 
 
 

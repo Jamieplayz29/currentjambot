@@ -1,8 +1,11 @@
+const { SlashCommandBuilder } = require('discord.js')
+
 module.exports =
 {
-    name: 'ping',
-    description: 'Ping Command',
-    aliases: ['pg'],
+    data: new SlashCommandBuilder()
+        .setName('ping')
+        .setDescription('Pongs'),
+        aliases: ['pg'],
     execute(message, args) {
         let ping = new Date().getTime() - message.createdTimestamp
         message.reply(`pong (${ping}ms)`);
