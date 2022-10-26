@@ -30,7 +30,7 @@ const distube = new DisTube.default(client, {
         ],
 })
 
-
+ 
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
 //log the login in console... type beat
