@@ -45,3 +45,4 @@
 4.6 - fixed timeout command so now it checks users roles to make sure that they have a lower role to stop missing permissions API error (19/01/2022)
 4.6.1 - fixed timout not working alltogether? also removed logging (25/01/2022)
 4.7 - added freesmileydealer function to bot.js, need to move out soon and add more emojis (22/03/2022)
+5.0 - updated all packages, upgraded to discord.js V14 and updated all code to support it. (27/10/2022)
