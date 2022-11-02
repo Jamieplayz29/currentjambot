@@ -51,7 +51,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 
 
-mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+
 
 //log the login in console... type beat
 client.on('ready', () => {
