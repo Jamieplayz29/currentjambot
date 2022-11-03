@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuillder } = require('discord.js');
 const punishments = require('../../models/ModSchema');
 const MessageModel = require('../../models/ModSchema');
 

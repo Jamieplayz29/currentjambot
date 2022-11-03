@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuillder } = require("discord.js");
 
 module.exports =
 {
@@ -7,7 +7,7 @@ module.exports =
     aliases: ['h'],
     execute(message, args) {
         if(message.member.permissions.has('ADMINISTRATOR')) {
-            const HelpEmbed = new MessageEmbed()
+            const HelpEmbed = new EmbedBuillder()
             .setColor(0x3498DB)
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
@@ -23,7 +23,7 @@ module.exports =
 
             message.channel.send({ embeds: [HelpEmbed] });
         } else {
-            const HelpEmbed = new MessageEmbed()
+            const HelpEmbed = new EmbedBuillder()
             .setColor(0x3498DB)
             .setTitle('Jam Bot')
             .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
