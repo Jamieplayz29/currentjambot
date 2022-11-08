@@ -6,7 +6,7 @@ module.exports =
     description: 'list of all commands the bot has',
     aliases: ['h'],
     execute(message, args) {
-        if(message.member.permissions.has('ADMINISTRATOR')) {
+        if(interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.Administrator)) {
             const HelpEmbed = new EmbedBuilder()
             .setColor(0x3498DB)
             .setTitle('Jam Bot')
