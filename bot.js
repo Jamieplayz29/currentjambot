@@ -1,4 +1,4 @@
-const {Client, Collection, EmbedBuilder, GatewayIntentBits, Partials, REST, Routes } = require('discord.js');
+const {Client, Collection, EmbedBuilder, GatewayIntentBits, Partials, REST, Routes, SlashCommandBuilder } = require('discord.js');
 const client = new Client({
     partials: [
         Partials.Channel,
@@ -19,7 +19,6 @@ const client = new Client({
 });
 const fs = require('fs');
 client.commands = new Collection();
-const { SlashCommandBuilder } = require('discord.js');
 const DisTube = require('distube')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -46,8 +45,6 @@ const distube = new DisTube.default(client, {
             new YtDlpPlugin({ update: true })
         ],
 })
-
-const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 
 
@@ -95,23 +92,23 @@ client.on('messageCreate', message => {
 }) */
 
 //slash commands
+const music = require('./commands/music/play.js')
 
-/*const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+const commands = [music.musicCommand]; 
+
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
-	try {
-		console.log('Started refreshing application (/) commands.');
+  try {
+    console.log('Started refreshing application (/) commands.');
 
-		await rest.put(
-			Routes.applicationCommands(process.env.CLIENT_ID),
-			{ body: 'bruh' },
-		);
+    await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands });
 
-		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(error);
-	}
-})(); */
+    console.log('Successfully reloaded application (/) commands.');
+  } catch (error) {
+    console.error(error);
+  }
+})();
 
 
 

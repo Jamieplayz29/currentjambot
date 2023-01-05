@@ -1,3 +1,5 @@
+const {SlashCommandBuilder } = require('discord.js')
+
 module.exports =
 {
     name: 'play',
@@ -15,3 +17,12 @@ module.exports =
 		});
     }
 } 
+
+const musicCommand = require('./commands/music/play.js')
+
+client.on('interactionCreate', interaction => {
+    if(interaction.isChatInputCommand()) {
+        interaction.reply('hello')
+    }
+})
+exports.musicCommand = musicCommand;
