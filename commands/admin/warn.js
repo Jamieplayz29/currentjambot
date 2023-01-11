@@ -1,4 +1,4 @@
-const { EmbedBuillder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const punishments = require('../../models/ModSchema');
 
 
@@ -20,7 +20,7 @@ module.exports =
             UserID: member.id
         });
 
-        const WarnEmbed = new EmbedBuillder()
+        const WarnEmbed = new EmbedBuilder()
         .setDescription(`**Succesfully warned ${member} \n Reason:** *${reason}*`);
 
         

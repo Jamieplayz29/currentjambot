@@ -1,4 +1,4 @@
-const { EmbedBuillder } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 const client = require('../../bot');
 
 module.exports =

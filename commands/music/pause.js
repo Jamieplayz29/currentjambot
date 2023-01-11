@@ -1,4 +1,4 @@
-const { EmbedBuillder } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 
 module.exports =
 {
@@ -7,7 +7,7 @@ module.exports =
     execute(message, args, distube) {
         distube.pause(message)
 
-        const pauseEmbed = new EmbedBuillder()
+        const pauseEmbed = new EmbedBuilder()
         .setDescription('Paused the song')
 
         message.reply({ embeds: [pauseEmbed] });
