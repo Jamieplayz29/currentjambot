@@ -1,4 +1,4 @@
-const { EmbedBuillder } = require("discord.js")
+const { EmbedBuillder, PermissionsBitField } = require("discord.js")
 
 module.exports =
 {
@@ -7,7 +7,7 @@ module.exports =
     aliases: ['to'],
     execute(message, args) {
 
-        if (!message.member.permissions.has('ADMINISTRATOR')) return  message.reply('only admins can use the timeout command!:sob::sob:')
+        if (!message.guild.members.me.permissions.has(PermissionsBitField.Flags.Administrator)) return  message.reply('only admins can use the timeout command!:sob::sob:')
         let member = message.mentions.members.first();
         let time = args[1] * 60 * 1000
         let reason = args[2]

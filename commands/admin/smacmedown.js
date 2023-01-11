@@ -1,3 +1,5 @@
+const { PermissionsBitField } = require('discord.js');
+
 const errorCode = require("rest/interceptor/errorCode");
 
 module.exports =

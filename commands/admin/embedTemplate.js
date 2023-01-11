@@ -8,13 +8,19 @@ embed
 .setDescription("This is the main body of text, it can hold 4096 characters.")
 .setImage("http://i.imgur.com/yVpymuV.png")
 .setThumbnail("http://i.imgur.com/p2qNFag.png")
-.addField("This is a single field title, it can hold 256 characters", "This is a field value, it can hold 1024 characters.")
+	.addFields(
+		{ name: 'Regular field title', value: 'Some value here' },
+		{ name: '\u200B', value: '\u200B' },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+	)
 
-.addFields(
-  { name: "Inline fields", value: "They can have different fields with small headlines, and you can inline them.", inline: true },
-  { name: "Masked links", value: "You can put [masked links](https://discord.js.org/#/docs/main/master/class/EmbedBuillder) inside of rich embeds.", inline: true },
-  { name: "Markdown", value: "You can put all the *usual* **__Markdown__** inside of them.", inline: true }
-)
+	.addFields(
+		{ name: 'Regular field title', value: 'Some value here' },
+		{ name: '\u200B', value: '\u200B' },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+	)
 
 .addField('\u200b', '\u200b' )
 

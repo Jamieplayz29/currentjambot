@@ -1,3 +1,5 @@
+const { PermissionsBitField } = require('discord.js');
+
 module.exports =
 {
     name: 'smacmeout',
@@ -9,7 +11,7 @@ module.exports =
         
         if(!member) {
             message.reply('You need to ping someone to kick')
-        } else if(!member.permissions.has('ADMINISTRATOR')) {
+        } else if(!message.guild.members.me.permissions.has(PermissionsBitField.Flags.Administrator)) {
             member.kick()
             .then(member => message.reply(`kicked ${member} from the server :sob:`))
             .catch(error => console.log(error))

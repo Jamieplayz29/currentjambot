@@ -18,11 +18,12 @@ module.exports =
     }
 } 
 
-const musicCommand = require('./commands/music/play.js')
+const musicCommand = new SlashCommandBuilder()
+    .setName('play')
+    .setDescription('adds a song to queue')
+    .toJSON()
 
-client.on('interactionCreate', interaction => {
-    if(interaction.isChatInputCommand()) {
-        interaction.reply('hello')
-    }
-})
+
+
+
 exports.musicCommand = musicCommand;
