@@ -1,4 +1,9 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js")
+const intents = new Intents([
+    Intents.NON_PRIVILEGED,
+    "GUILD_MEMBERS", 
+]);
+const client = new Client({ ws: { intents } });
 
 module.exports =
 {
