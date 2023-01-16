@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js")
+const { EmbedBuilder, PermissionsBitField, Intents } = require("discord.js")
 const intents = new Intents([
     Intents.NON_PRIVILEGED,
     "GUILD_MEMBERS", 
