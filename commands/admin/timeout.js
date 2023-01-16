@@ -1,7 +1,4 @@
 const { EmbedBuilder, PermissionsBitField, Intents } = require("discord.js")
-const intents = new Intents([
-    "GUILD_MEMBERS", 
-]);
 const client = new Client({ ws: { intents } });
 
 module.exports =
