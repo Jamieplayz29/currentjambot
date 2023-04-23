@@ -47,3 +47,4 @@
 4.7 - added freesmileydealer function to bot.js, need to move out soon and add more emojis (22/03/2022)
 5.0 - updated all packages, upgraded to discord.js V14 and updated all code to support it. (27/10/2022)
 5.0.1 - Changed all MessageEmbeds to EmbedBuilder from upgrade to discordjs v14 (3/11/2022)
+6.0 (beta) - changed all music commands to slash commands

@@ -1,9 +1,11 @@
-module.exports =
-{
-    name: 'previous',
-    description: 'replays previous song from the queue',
-    aliases: ['prev', 'replay', 'r'],
-    execute( message, args, distube) {
-        distube.previous(message)
-    }
-} 
+const { SlashCommandBuilder } = require('discord.js');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('previous')
+		.setDescription('replays previous song from queue'),
+	async execute(interaction, distube) {
+        distube.previous(interaction)
+        interaction.reply('Replaying previous song')
+	},
+};

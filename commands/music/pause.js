@@ -1,15 +1,15 @@
-const { EmbedBuilder } = require("discord.js")
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js")
 
-module.exports =
-{
-    name: 'pause',
-    description: 'pauses the song',
-    execute(message, args, distube) {
-        distube.pause(message)
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('pause')
+		.setDescription('pauses the song'),
+	async execute(interaction, distube) {
+        distube.pause(interaction)
 
         const pauseEmbed = new EmbedBuilder()
         .setDescription('Paused the song')
 
-        message.reply({ embeds: [pauseEmbed] });
-    }      
-} 
+        interaction.reply({ embeds: [pauseEmbed] });
+	},
+};

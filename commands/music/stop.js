@@ -1,9 +1,11 @@
-module.exports =
-{
-    name: 'stop',
-    description: 'clears the queue and leaves the voice chat',
-    aliases: ['dc', 'leave', 'leaveden', 'fuckoff', 'getout', 'exit', 'cicho-badz', 'cicho', 'cheeto-bonge'],
-    execute(message, args, distube) {
-        distube.stop(message)
-    }
-} 
+const { SlashCommandBuilder } = require('discord.js');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('stop')
+		.setDescription('Clears the queue and leaves the voice chat'),
+	async execute(interaction, distube) {
+        distube.stop(interaction)
+        interaction.reply('Stopped the music')
+	},
+};

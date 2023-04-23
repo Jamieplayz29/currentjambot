@@ -1,9 +1,10 @@
-module.exports =
-{
-    name: 'resume',
-    description: 'resumes the music',
-    aliases: ['r', 'res'],
-    execute(message, distube) {
-        distube.resume(message)
+const { SlashCommandBuilder } = require('discord.js');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('resume')
+		.setDescription('resumes the music'),
+	async execute(interaction, distube) {
+        distube.resume(interaction)
     }
 }

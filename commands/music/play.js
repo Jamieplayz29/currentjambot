@@ -1,29 +1,27 @@
-const {SlashCommandBuilder } = require('discord.js')
+const { SlashCommandBuilder } = require('discord.js');
 
-module.exports =
-{
-    name: 'play',
-    description: 'plays a song',
-    aliases: ['p'],
-    execute( message, args, distube) {
-        distube
-		.play(message.member.voice.channel, args.join(' '), {
-			message,
-			textChannel: message.channel,
-			member: message.member,
-		})
-		.catch(err => {
-			message.reply(err.message);
-		});
-    }
-} 
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('play')
+		.setDescription('plays a song')
+		.addStringOption(option => option.setName('song').setDescription('Queue a song name or paste in the URL of the song').setRequired(true)),
+	async execute(interaction, distube) {
+        const query = interaction.options.getString('song'); // Assuming 'song' is the name of the option in your slash command data
 
-const musicCommand = new SlashCommandBuilder()
-    .setName('play')
-    .setDescription('adds a song to queue')
-    .toJSON()
+        const voiceChannel = interaction.member.voice.channel;
+        if (!voiceChannel) {
+            return await interaction.reply('You need to join a voice channel first!');
+        }
 
-
-
-
-exports.musicCommand = musicCommand;
+        try {
+            await distube.play(voiceChannel, query, {
+                textChannel: interaction.channel,
+                member: interaction.member,
+            });
+            await interaction.reply(`Now playing: ${query}`);
+        } catch (error) {
+            console.error(error);
+            await interaction.reply('An error occurred while trying to play the song.');
+        }
+    },
+};

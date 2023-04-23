@@ -1,17 +1,15 @@
-const { EmbedBuilder } = require("discord.js")
-const client = require('../../bot');
+const { SlashCommandBuilder } = require('discord.js');
 
-module.exports =
-{
-    name: 'queue',
-    description: 'displays the songs in the queue',
-    aliases: ['q'],
-    execute(message, args, distube) {
-		const queue = distube.getQueue(message);
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('queue')
+		.setDescription('Displays the songs in the queue'),
+	async execute(interaction, distube) {
+		const queue = distube.getQueue(interaction);
 		if (!queue) {
-			message.channel.send('Nothing playing right now!');
+			interaction.reply('Nothing playing right now!');
 		} else {
-			message.channel.send(
+			interaction.reply(
 				`Current queue:\n${queue.songs
 					.map(
 						(song, id) =>

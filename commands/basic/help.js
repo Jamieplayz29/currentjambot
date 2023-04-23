@@ -1,12 +1,13 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
-module.exports =
-{
-    name: 'help',
-    description: 'list of all commands the bot has',
-    aliases: ['h'],
-    execute(message, args) {
-        if(message.guild.members.me.permissions.has(PermissionsBitField.Flags.Administrator)) {
+const { SlashCommandBuilder } = require('discord.js');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription('Displays a list of commands Jam Bot can do'),
+	async execute(interaction) {
+        if(interaction.guild.members.me.permissions.has(PermissionsBitField.Flags.Administrator)) {
             const HelpEmbed = new EmbedBuilder()
                 .setColor(0x3498DB)
                 .setTitle('Jam Bot')
@@ -19,9 +20,9 @@ module.exports =
                 )
                 .setThumbnail('https://i.imgur.com/PMauoQo.jpeg')
                 .setTimestamp()
-                .setFooter( {text: `help requested by ${message.author.username}`, iconURL: `https://cdn.discordapp.com/avatars/${message.member.user.id}/${message.member.user.avatar}.png` } );
+                .setFooter( {text: `help requested by ${interaction.member.user.username}`, iconURL: `https://cdn.discordapp.com/avatars/${interaction.member.user.id}/${interaction.member.user.avatar}.png` } );
 
-            message.channel.send({ embeds: [HelpEmbed] });
+            interaction.reply({ embeds: [HelpEmbed] });
         } else {
             const HelpEmbed = new EmbedBuilder()
             .setColor(0x3498DB)
@@ -34,10 +35,10 @@ module.exports =
             )
             .setThumbnail('https://i.imgur.com/PMauoQo.jpeg')
             .setTimestamp()
-            .setFooter( {text: `help requested by ${message.author.username}`, iconURL: `https://cdn.discordapp.com/avatars/${message.member.user.id}/${message.member.user.avatar}.png` } );
+            .setFooter( {text: `help requested by ${interaction.member.user.username}`, iconURL: `https://cdn.discordapp.com/avatars/${interaction.member.user.id}/${interaction.member.user.avatar}.png` } );
 
 
-            message.channel.send({ embeds: [HelpEmbed] });
+            interaction.reply({ embeds: [HelpEmbed] });
         }
     }      
 } 
