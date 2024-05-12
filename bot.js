@@ -46,7 +46,6 @@ const distube = new DisTube.default(client, {
             new YtDlpPlugin({ update: true })
         ],
 })
-
 // new command handler
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
